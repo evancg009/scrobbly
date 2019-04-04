@@ -1,0 +1,78 @@
+﻿@model Scrobbly.Models.Play
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Play</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlbumId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlbumName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistIds)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtistIds)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistNames)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtistNames)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dirty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dirty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ListenTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ListenTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Popularity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Popularity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrackId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrackName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceOf)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SourceOf)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

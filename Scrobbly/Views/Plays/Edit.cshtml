@@ -1,0 +1,81 @@
+﻿@model Scrobbly.Models.Play
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Play</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="AlbumId" class="control-label"></label>
+                <input asp-for="AlbumId" class="form-control" />
+                <span asp-validation-for="AlbumId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumName" class="control-label"></label>
+                <input asp-for="AlbumName" class="form-control" />
+                <span asp-validation-for="AlbumName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtistIds" class="control-label"></label>
+                <input asp-for="ArtistIds" class="form-control" />
+                <span asp-validation-for="ArtistIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtistNames" class="control-label"></label>
+                <input asp-for="ArtistNames" class="form-control" />
+                <span asp-validation-for="ArtistNames" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Dirty" /> @Html.DisplayNameFor(model => model.Dirty)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="ListenTime" class="control-label"></label>
+                <input asp-for="ListenTime" class="form-control" />
+                <span asp-validation-for="ListenTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Popularity" class="control-label"></label>
+                <input asp-for="Popularity" class="form-control" />
+                <span asp-validation-for="Popularity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackId" class="control-label"></label>
+                <input asp-for="TrackId" class="form-control" />
+                <span asp-validation-for="TrackId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackName" class="control-label"></label>
+                <input asp-for="TrackName" class="form-control" />
+                <span asp-validation-for="TrackName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceOf" class="control-label"></label>
+                <input asp-for="SourceOf" class="form-control" />
+                <span asp-validation-for="SourceOf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

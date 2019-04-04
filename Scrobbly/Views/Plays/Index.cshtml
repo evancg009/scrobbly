@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Scrobbly.Models.Play>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AlbumId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlbumName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistIds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArtistNames)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dirty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListenTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popularity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrackId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrackName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SourceOf)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistIds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArtistNames)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dirty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ListenTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popularity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrackId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrackName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SourceOf)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
