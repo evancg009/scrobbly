@@ -36,8 +36,8 @@ namespace Scrobbly
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            var connection = @"Host=localhost;Database=music;Username=postgres;Password=Vanilla!16";
-            services.AddDbContext<musicContext>(options => options.UseNpgsql(connection));
+            services.AddDbContext<musicContext>(
+                options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
