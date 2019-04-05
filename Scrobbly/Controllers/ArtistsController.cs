@@ -53,7 +53,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SpotifyId,Name,AltNames")] Artist artist)
+        public async Task<IActionResult> Create([Bind("Id,SpotifyId,Name")] Artist artist)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,SpotifyId,Name,AltNames")] Artist artist)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,SpotifyId,Name")] Artist artist)
         {
             if (id != artist.Id)
             {

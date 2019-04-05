@@ -17,11 +17,14 @@ namespace Scrobbly.Models
 
         public virtual DbSet<Album> Album { get; set; }
         public virtual DbSet<AlbumArtists> AlbumArtists { get; set; }
+        public virtual DbSet<AlbumTags> AlbumTags { get; set; }
         public virtual DbSet<Artist> Artist { get; set; }
+        public virtual DbSet<ArtistTags> ArtistTags { get; set; }
         public virtual DbSet<Play> Play { get; set; }
+        public virtual DbSet<Tag> Tag { get; set; }
         public virtual DbSet<Track> Track { get; set; }
-        public virtual DbSet<TrackAlbums> TrackAlbums { get; set; }
         public virtual DbSet<TrackArtists> TrackArtists { get; set; }
+        public virtual DbSet<TrackTags> TrackTags { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -41,8 +44,6 @@ namespace Scrobbly.Models
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .ValueGeneratedNever();
-
-                entity.Property(e => e.AltNames).HasColumnName("alt_names");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -72,6 +73,27 @@ namespace Scrobbly.Models
                     .HasConstraintName("fk_album_artists_artist_id");
             });
 
+            modelBuilder.Entity<AlbumTags>(entity =>
+            {
+                entity.HasKey(e => new { e.AlbumId, e.TagId });
+
+                entity.ToTable("album_tags");
+
+                entity.Property(e => e.AlbumId).HasColumnName("album_id");
+
+                entity.Property(e => e.TagId).HasColumnName("tag_id");
+
+                entity.HasOne(d => d.Album)
+                    .WithMany(p => p.AlbumTags)
+                    .HasForeignKey(d => d.AlbumId)
+                    .HasConstraintName("fk_album_tags_album_id");
+
+                entity.HasOne(d => d.Tag)
+                    .WithMany(p => p.AlbumTags)
+                    .HasForeignKey(d => d.TagId)
+                    .HasConstraintName("fk_album_tags_tag_id");
+            });
+
             modelBuilder.Entity<Artist>(entity =>
             {
                 entity.ToTable("artist");
@@ -80,13 +102,32 @@ namespace Scrobbly.Models
                     .HasColumnName("id")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.AltNames).HasColumnName("alt_names");
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name");
 
                 entity.Property(e => e.SpotifyId).HasColumnName("spotify_id");
+            });
+
+            modelBuilder.Entity<ArtistTags>(entity =>
+            {
+                entity.HasKey(e => new { e.ArtistId, e.TagId });
+
+                entity.ToTable("artist_tags");
+
+                entity.Property(e => e.ArtistId).HasColumnName("artist_id");
+
+                entity.Property(e => e.TagId).HasColumnName("tag_id");
+
+                entity.HasOne(d => d.Artist)
+                    .WithMany(p => p.ArtistTags)
+                    .HasForeignKey(d => d.ArtistId)
+                    .HasConstraintName("fk_artist_tags_artist_id");
+
+                entity.HasOne(d => d.Tag)
+                    .WithMany(p => p.ArtistTags)
+                    .HasForeignKey(d => d.TagId)
+                    .HasConstraintName("fk_artist_tags_tag_id");
             });
 
             modelBuilder.Entity<Play>(entity =>
@@ -99,9 +140,7 @@ namespace Scrobbly.Models
 
                 entity.Property(e => e.AlbumId).HasColumnName("album_id");
 
-                entity.Property(e => e.AlbumName)
-                    .IsRequired()
-                    .HasColumnName("album_name");
+                entity.Property(e => e.AlbumName).HasColumnName("album_name");
 
                 entity.Property(e => e.ArtistIds)
                     .IsRequired()
@@ -131,6 +170,19 @@ namespace Scrobbly.Models
                     .HasColumnName("track_name");
             });
 
+            modelBuilder.Entity<Tag>(entity =>
+            {
+                entity.ToTable("tag");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("id")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasColumnName("name");
+            });
+
             modelBuilder.Entity<Track>(entity =>
             {
                 entity.ToTable("track");
@@ -139,7 +191,7 @@ namespace Scrobbly.Models
                     .HasColumnName("id")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.AltNames).HasColumnName("alt_names");
+                entity.Property(e => e.AlbumId).HasColumnName("album_id");
 
                 entity.Property(e => e.Duration).HasColumnName("duration");
 
@@ -147,28 +199,21 @@ namespace Scrobbly.Models
                     .IsRequired()
                     .HasColumnName("name");
 
+                entity.Property(e => e.SourceTrackId).HasColumnName("source_track_id");
+
                 entity.Property(e => e.SpotifyId).HasColumnName("spotify_id");
-            });
-
-            modelBuilder.Entity<TrackAlbums>(entity =>
-            {
-                entity.HasKey(e => new { e.TrackId, e.AlbumId });
-
-                entity.ToTable("track_albums");
-
-                entity.Property(e => e.TrackId).HasColumnName("track_id");
-
-                entity.Property(e => e.AlbumId).HasColumnName("album_id");
 
                 entity.HasOne(d => d.Album)
-                    .WithMany(p => p.TrackAlbums)
+                    .WithMany(p => p.Track)
                     .HasForeignKey(d => d.AlbumId)
-                    .HasConstraintName("fk_track_albums_album_id");
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("fk_track_album_id");
 
-                entity.HasOne(d => d.Track)
-                    .WithMany(p => p.TrackAlbums)
-                    .HasForeignKey(d => d.TrackId)
-                    .HasConstraintName("fk_track_albums_track_id");
+                entity.HasOne(d => d.SourceTrack)
+                    .WithMany(p => p.InverseSourceTrack)
+                    .HasForeignKey(d => d.SourceTrackId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("fk_track_source_track_id");
             });
 
             modelBuilder.Entity<TrackArtists>(entity =>
@@ -190,6 +235,27 @@ namespace Scrobbly.Models
                     .WithMany(p => p.TrackArtists)
                     .HasForeignKey(d => d.TrackId)
                     .HasConstraintName("fk_track_artists_track_id");
+            });
+
+            modelBuilder.Entity<TrackTags>(entity =>
+            {
+                entity.HasKey(e => new { e.TrackId, e.TagId });
+
+                entity.ToTable("track_tags");
+
+                entity.Property(e => e.TrackId).HasColumnName("track_id");
+
+                entity.Property(e => e.TagId).HasColumnName("tag_id");
+
+                entity.HasOne(d => d.Tag)
+                    .WithMany(p => p.TrackTags)
+                    .HasForeignKey(d => d.TagId)
+                    .HasConstraintName("fk_track_tags_tag_id");
+
+                entity.HasOne(d => d.Track)
+                    .WithMany(p => p.TrackTags)
+                    .HasForeignKey(d => d.TrackId)
+                    .HasConstraintName("fk_track_tags_track_id");
             });
         }
     }

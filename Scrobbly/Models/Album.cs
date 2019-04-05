@@ -8,15 +8,16 @@ namespace Scrobbly.Models
         public Album()
         {
             AlbumArtists = new HashSet<AlbumArtists>();
-            TrackAlbums = new HashSet<TrackAlbums>();
+            AlbumTags = new HashSet<AlbumTags>();
+            Track = new HashSet<Track>();
         }
 
         public Guid Id { get; set; }
         public string SpotifyId { get; set; }
         public string Name { get; set; }
-        public string[] AltNames { get; set; }
 
         public ICollection<AlbumArtists> AlbumArtists { get; set; }
-        public ICollection<TrackAlbums> TrackAlbums { get; set; }
+        public ICollection<AlbumTags> AlbumTags { get; set; }
+        public ICollection<Track> Track { get; set; }
     }
 }

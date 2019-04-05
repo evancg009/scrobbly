@@ -6,7 +6,7 @@ namespace Scrobbly.Models
     public partial class Play
     {
         public Guid Id { get; set; }
-        public Guid AlbumId { get; set; }
+        public Guid? AlbumId { get; set; }
         public string AlbumName { get; set; }
         public Guid[] ArtistIds { get; set; }
         public string[] ArtistNames { get; set; }

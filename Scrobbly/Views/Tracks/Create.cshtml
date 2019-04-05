@@ -28,14 +28,17 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AltNames" class="control-label"></label>
-                <input asp-for="AltNames" class="form-control" />
-                <span asp-validation-for="AltNames" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Duration" class="control-label"></label>
                 <input asp-for="Duration" class="form-control" />
                 <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SourceTrackId" class="control-label"></label>
+                <select asp-for="SourceTrackId" class ="form-control" asp-items="ViewBag.SourceTrackId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumId" class="control-label"></label>
+                <select asp-for="AlbumId" class ="form-control" asp-items="ViewBag.AlbumId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

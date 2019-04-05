@@ -24,16 +24,22 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.AltNames)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AltNames)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.Duration)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Duration)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Album)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Album.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SourceTrack)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SourceTrack.Name)
         </dd>
     </dl>
     

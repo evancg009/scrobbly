@@ -7,17 +7,22 @@ namespace Scrobbly.Models
     {
         public Track()
         {
-            TrackAlbums = new HashSet<TrackAlbums>();
+            InverseSourceTrack = new HashSet<Track>();
             TrackArtists = new HashSet<TrackArtists>();
+            TrackTags = new HashSet<TrackTags>();
         }
 
         public Guid Id { get; set; }
         public string SpotifyId { get; set; }
         public string Name { get; set; }
-        public string[] AltNames { get; set; }
         public int? Duration { get; set; }
+        public Guid? SourceTrackId { get; set; }
+        public Guid? AlbumId { get; set; }
 
-        public ICollection<TrackAlbums> TrackAlbums { get; set; }
+        public Album Album { get; set; }
+        public Track SourceTrack { get; set; }
+        public ICollection<Track> InverseSourceTrack { get; set; }
         public ICollection<TrackArtists> TrackArtists { get; set; }
+        public ICollection<TrackTags> TrackTags { get; set; }
     }
 }

@@ -21,7 +21,8 @@ namespace Scrobbly.Controllers
         // GET: Tracks
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Track.ToListAsync());
+            var musicContext = _context.Track.Include(t => t.Album).Include(t => t.SourceTrack);
+            return View(await musicContext.ToListAsync());
         }
 
         // GET: Tracks/Details/5
@@ -33,6 +34,8 @@ namespace Scrobbly.Controllers
             }
 
             var track = await _context.Track
+                .Include(t => t.Album)
+                .Include(t => t.SourceTrack)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (track == null)
             {
@@ -45,6 +48,8 @@ namespace Scrobbly.Controllers
         // GET: Tracks/Create
         public IActionResult Create()
         {
+            ViewData["AlbumId"] = new SelectList(_context.Album, "Id", "Name");
+            ViewData["SourceTrackId"] = new SelectList(_context.Track, "Id", "Name");
             return View();
         }
 
@@ -53,7 +58,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SpotifyId,Name,AltNames,Duration")] Track track)
+        public async Task<IActionResult> Create([Bind("Id,SpotifyId,Name,Duration,SourceTrackId,AlbumId")] Track track)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace Scrobbly.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AlbumId"] = new SelectList(_context.Album, "Id", "Name", track.AlbumId);
+            ViewData["SourceTrackId"] = new SelectList(_context.Track, "Id", "Name", track.SourceTrackId);
             return View(track);
         }
 
@@ -78,6 +85,8 @@ namespace Scrobbly.Controllers
             {
                 return NotFound();
             }
+            ViewData["AlbumId"] = new SelectList(_context.Album, "Id", "Name", track.AlbumId);
+            ViewData["SourceTrackId"] = new SelectList(_context.Track, "Id", "Name", track.SourceTrackId);
             return View(track);
         }
 
@@ -86,7 +95,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,SpotifyId,Name,AltNames,Duration")] Track track)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,SpotifyId,Name,Duration,SourceTrackId,AlbumId")] Track track)
         {
             if (id != track.Id)
             {
@@ -113,6 +122,8 @@ namespace Scrobbly.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["AlbumId"] = new SelectList(_context.Album, "Id", "Name", track.AlbumId);
+            ViewData["SourceTrackId"] = new SelectList(_context.Track, "Id", "Name", track.SourceTrackId);
             return View(track);
         }
 
@@ -125,6 +136,8 @@ namespace Scrobbly.Controllers
             }
 
             var track = await _context.Track
+                .Include(t => t.Album)
+                .Include(t => t.SourceTrack)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (track == null)
             {
