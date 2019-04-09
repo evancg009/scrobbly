@@ -21,7 +21,18 @@ namespace Scrobbly.Controllers
         // GET: Albums
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Album.ToListAsync());
+            var musicContext = _context.Album.Include(a => a.AlbumArtists).ThenInclude(aa => aa.Artist);
+
+            ////var musicContext = _context.Album.FromSql(
+            //    @"SELECT album.*, artist.name
+            //    FROM album album
+            //    LEFT JOIN album_artists a_a
+            //        ON album.id = a_a.album_id
+            //    LEFT JOIN artist artist
+            //        ON a_a.artist_id = artist.id;"
+            //    );
+
+            return View(await musicContext.ToListAsync());
         }
 
         // GET: Albums/Details/5
@@ -53,7 +64,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SpotifyId,Name")] Album album)
+        public async Task<IActionResult> Create([Bind("SpotifyId,Name,Image")] Album album)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +97,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,SpotifyId,Name")] Album album)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,SpotifyId,Name,Image")] Album album)
         {
             if (id != album.Id)
             {

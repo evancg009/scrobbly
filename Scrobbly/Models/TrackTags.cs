@@ -8,7 +8,7 @@ namespace Scrobbly.Models
         public Guid TrackId { get; set; }
         public Guid TagId { get; set; }
 
-        public Tag Tag { get; set; }
-        public Track Track { get; set; }
+        public virtual Tag Tag { get; set; }
+        public virtual Track Track { get; set; }
     }
 }

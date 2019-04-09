@@ -8,7 +8,7 @@ namespace Scrobbly.Models
         public Guid ArtistId { get; set; }
         public Guid TagId { get; set; }
 
-        public Artist Artist { get; set; }
-        public Tag Tag { get; set; }
+        public virtual Artist Artist { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

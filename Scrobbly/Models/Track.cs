@@ -19,10 +19,10 @@ namespace Scrobbly.Models
         public Guid? SourceTrackId { get; set; }
         public Guid? AlbumId { get; set; }
 
-        public Album Album { get; set; }
-        public Track SourceTrack { get; set; }
-        public ICollection<Track> InverseSourceTrack { get; set; }
-        public ICollection<TrackArtists> TrackArtists { get; set; }
-        public ICollection<TrackTags> TrackTags { get; set; }
+        public virtual Album Album { get; set; }
+        public virtual Track SourceTrack { get; set; }
+        public virtual ICollection<Track> InverseSourceTrack { get; set; }
+        public virtual ICollection<TrackArtists> TrackArtists { get; set; }
+        public virtual ICollection<TrackTags> TrackTags { get; set; }
     }
 }

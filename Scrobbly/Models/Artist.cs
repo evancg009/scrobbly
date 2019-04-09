@@ -16,8 +16,8 @@ namespace Scrobbly.Models
         public string SpotifyId { get; set; }
         public string Name { get; set; }
 
-        public ICollection<AlbumArtists> AlbumArtists { get; set; }
-        public ICollection<ArtistTags> ArtistTags { get; set; }
-        public ICollection<TrackArtists> TrackArtists { get; set; }
+        public virtual ICollection<AlbumArtists> AlbumArtists { get; set; }
+        public virtual ICollection<ArtistTags> ArtistTags { get; set; }
+        public virtual ICollection<TrackArtists> TrackArtists { get; set; }
     }
 }

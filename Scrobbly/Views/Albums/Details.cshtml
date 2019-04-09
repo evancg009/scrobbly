@@ -2,6 +2,15 @@
 
 @{
     ViewData["Title"] = "Album Details";
+    string allArtists = "";
+    foreach (var albumToArist in Model.AlbumArtists)
+    {
+        allArtists += albumToArist.Artist.Name + ", ";
+    }
+    if (allArtists.Contains(","))
+    {
+        allArtists = allArtists.Remove(allArtists.LastIndexOf(","));
+    }
 }
 
 <h2>Album Details</h2>
@@ -21,6 +30,18 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumArtists)
+        </dt>
+        <dd>
+            @allArtists
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image)
         </dd>
     </dl>
 </div>

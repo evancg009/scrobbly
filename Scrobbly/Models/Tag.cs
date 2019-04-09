@@ -15,8 +15,8 @@ namespace Scrobbly.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<AlbumTags> AlbumTags { get; set; }
-        public ICollection<ArtistTags> ArtistTags { get; set; }
-        public ICollection<TrackTags> TrackTags { get; set; }
+        public virtual ICollection<AlbumTags> AlbumTags { get; set; }
+        public virtual ICollection<ArtistTags> ArtistTags { get; set; }
+        public virtual ICollection<TrackTags> TrackTags { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Scrobbly.Models
         public Guid TrackId { get; set; }
         public Guid ArtistId { get; set; }
 
-        public Artist Artist { get; set; }
-        public Track Track { get; set; }
+        public virtual Artist Artist { get; set; }
+        public virtual Track Track { get; set; }
     }
 }

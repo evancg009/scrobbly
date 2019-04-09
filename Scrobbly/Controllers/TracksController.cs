@@ -58,7 +58,7 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,SpotifyId,Name,Duration,SourceTrackId,AlbumId")] Track track)
+        public async Task<IActionResult> Create([Bind("SpotifyId,Name,Duration,SourceTrackId,AlbumId")] Track track)
         {
             if (ModelState.IsValid)
             {

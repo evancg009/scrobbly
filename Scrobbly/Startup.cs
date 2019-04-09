@@ -37,7 +37,7 @@ namespace Scrobbly
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<musicContext>(
-                options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseLazyLoadingProxies().UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -45,6 +45,8 @@ namespace Scrobbly.Models
                     .HasColumnName("id")
                     .ValueGeneratedNever();
 
+                entity.Property(e => e.Image).HasColumnName("image");
+
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name");

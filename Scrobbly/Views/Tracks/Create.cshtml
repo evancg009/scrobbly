@@ -13,11 +13,6 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="SpotifyId" class="control-label"></label>
                 <input asp-for="SpotifyId" class="form-control" />
                 <span asp-validation-for="SpotifyId" class="text-danger"></span>
@@ -34,11 +29,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="SourceTrackId" class="control-label"></label>
-                <select asp-for="SourceTrackId" class ="form-control" asp-items="ViewBag.SourceTrackId"></select>
+                <select asp-for="SourceTrackId" class="form-control" asp-items="ViewBag.SourceTrackId">
+                    <option disabled selected>--- SELECT ---</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="AlbumId" class="control-label"></label>
-                <select asp-for="AlbumId" class ="form-control" asp-items="ViewBag.AlbumId"></select>
+                <select asp-for="AlbumId" class="form-control" asp-items="ViewBag.AlbumId">
+                    <option disabled selected>--- SELECT ---</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

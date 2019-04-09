@@ -30,12 +30,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="SourceTrackId" class="control-label"></label>
-                <select asp-for="SourceTrackId" class="form-control" asp-items="ViewBag.SourceTrackId"></select>
+                <select asp-for="SourceTrackId" class="form-control" asp-items="ViewBag.SourceTrackId">
+                    <option disabled selected>--- SELECT ---</option>
+                </select>
                 <span asp-validation-for="SourceTrackId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AlbumId" class="control-label"></label>
-                <select asp-for="AlbumId" class="form-control" asp-items="ViewBag.AlbumId"></select>
+                <select asp-for="AlbumId" class="form-control" asp-items="ViewBag.AlbumId">
+                    <option disabled selected>--- SELECT ---</option>
+                </select>
                 <span asp-validation-for="AlbumId" class="text-danger"></span>
             </div>
             <div class="form-group">
