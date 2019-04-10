@@ -140,6 +140,8 @@ namespace Scrobbly.Models
                     .HasColumnName("id")
                     .ValueGeneratedNever();
 
+                entity.Property(e => e.AlbumImage).HasColumnName("album_image");
+
                 entity.Property(e => e.AlbumName).HasColumnName("album_name");
 
                 entity.Property(e => e.AlbumSpotifyId).HasColumnName("album_spotify_id");
@@ -162,6 +164,8 @@ namespace Scrobbly.Models
                     .IsRequired()
                     .HasColumnName("source_of")
                     .HasColumnType("character(50)");
+
+                entity.Property(e => e.TrackDuration).HasColumnName("track_duration");
 
                 entity.Property(e => e.TrackId).HasColumnName("track_id");
 

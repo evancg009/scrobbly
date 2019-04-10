@@ -56,7 +56,8 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlbumName,ArtistNames,Dirty,ListenTime,Popularity,TrackId,TrackName,SourceOf,TrackSpotifyId,ArtistSpotifyIds,AlbumSpotifyId")] Play play)
+        public async Task<IActionResult> Create(
+            [Bind("AlbumName,ArtistNames,Dirty,ListenTime,Popularity,TrackId,TrackName,SourceOf,TrackSpotifyId,ArtistSpotifyIds,AlbumSpotifyId,TrackDuration,AlbumImage")] Play play)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +92,8 @@ namespace Scrobbly.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,AlbumName,ArtistNames,Dirty,ListenTime,Popularity,TrackId,TrackName,SourceOf,TrackSpotifyId,ArtistSpotifyIds,AlbumSpotifyId")] Play play)
+        public async Task<IActionResult> Edit(Guid id,
+            [Bind("Id,AlbumName,ArtistNames,Dirty,ListenTime,Popularity,TrackId,TrackName,SourceOf,TrackSpotifyId,ArtistSpotifyIds,AlbumSpotifyId,TrackDuration,AlbumImage")] Play play)
         {
             if (id != play.Id)
             {

@@ -45,6 +45,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Track)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrackDuration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlbumImage)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -84,6 +90,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Track.Name)
             </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.TrackDuration)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AlbumImage)
+            </th>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

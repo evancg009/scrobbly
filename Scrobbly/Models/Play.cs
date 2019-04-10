@@ -15,8 +15,10 @@ namespace Scrobbly.Models
         public string TrackName { get; set; }
         public string SourceOf { get; set; }
         public string TrackSpotifyId { get; set; }
-        public string ArtistSpotifyIds { get; set; }
+        public string[] ArtistSpotifyIds { get; set; }
         public string AlbumSpotifyId { get; set; }
+        public int? TrackDuration { get; set; }
+        public string AlbumImage { get; set; }
 
         public virtual Track Track { get; set; }
     }

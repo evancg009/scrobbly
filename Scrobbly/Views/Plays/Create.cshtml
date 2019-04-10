@@ -1,10 +1,10 @@
 ﻿@model Scrobbly.Models.Play
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Play";
 }
 
-<h2>Create</h2>
+<h2>Add Play</h2>
 
 <h4>Play</h4>
 <hr />
@@ -12,11 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="AlbumName" class="control-label"></label>
                 <input asp-for="AlbumName" class="form-control" />
@@ -46,7 +41,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="TrackId" class="control-label"></label>
-                <select asp-for="TrackId" class ="form-control" asp-items="ViewBag.TrackId"></select>
+                <select asp-for="TrackId" class="form-control" asp-items="ViewBag.TrackId">
+                    <option disabled selected>--- SELECT ---</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="TrackName" class="control-label"></label>
@@ -72,6 +69,16 @@
                 <label asp-for="AlbumSpotifyId" class="control-label"></label>
                 <input asp-for="AlbumSpotifyId" class="form-control" />
                 <span asp-validation-for="AlbumSpotifyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackDuration" class="control-label"></label>
+                <input asp-for="TrackDuration" class="form-control" />
+                <span asp-validation-for="TrackDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumImage" class="control-label"></label>
+                <input asp-for="AlbumImage" class="form-control" />
+                <span asp-validation-for="AlbumImage" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
