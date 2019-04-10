@@ -1,32 +1,20 @@
 ﻿@model Scrobbly.Models.Play
 
 @{
-    ViewData["Title"] = "Play Details";
+    ViewData["Title"] = "Details";
 }
 
-<h2>Play Details</h2>
+<h2>Details</h2>
 
 <div>
     <h4>Play</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.AlbumId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AlbumId)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.AlbumName)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.AlbumName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ArtistIds)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ArtistIds)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.ArtistNames)
@@ -53,12 +41,6 @@
             @Html.DisplayFor(model => model.Popularity)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.TrackId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TrackId)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.TrackName)
         </dt>
         <dd>
@@ -69,6 +51,30 @@
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SourceOf)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackSpotifyId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TrackSpotifyId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtistSpotifyIds)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ArtistSpotifyIds)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumSpotifyId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlbumSpotifyId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Track)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Track.Name)
         </dd>
     </dl>
 </div>

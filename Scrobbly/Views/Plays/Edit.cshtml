@@ -1,10 +1,10 @@
 ﻿@model Scrobbly.Models.Play
 
 @{
-    ViewData["Title"] = "Edit Play";
+    ViewData["Title"] = "Edit";
 }
 
-<h2>Edit Play</h2>
+<h2>Edit</h2>
 
 <h4>Play</h4>
 <hr />
@@ -14,19 +14,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="AlbumId" class="control-label"></label>
-                <input asp-for="AlbumId" class="form-control" />
-                <span asp-validation-for="AlbumId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="AlbumName" class="control-label"></label>
                 <input asp-for="AlbumName" class="form-control" />
                 <span asp-validation-for="AlbumName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ArtistIds" class="control-label"></label>
-                <input asp-for="ArtistIds" class="form-control" />
-                <span asp-validation-for="ArtistIds" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ArtistNames" class="control-label"></label>
@@ -52,7 +42,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TrackId" class="control-label"></label>
-                <input asp-for="TrackId" class="form-control" />
+                <select asp-for="TrackId" class="form-control" asp-items="ViewBag.TrackId"></select>
                 <span asp-validation-for="TrackId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -64,6 +54,21 @@
                 <label asp-for="SourceOf" class="control-label"></label>
                 <input asp-for="SourceOf" class="form-control" />
                 <span asp-validation-for="SourceOf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackSpotifyId" class="control-label"></label>
+                <input asp-for="TrackSpotifyId" class="form-control" />
+                <span asp-validation-for="TrackSpotifyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtistSpotifyIds" class="control-label"></label>
+                <input asp-for="ArtistSpotifyIds" class="form-control" />
+                <span asp-validation-for="ArtistSpotifyIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumSpotifyId" class="control-label"></label>
+                <input asp-for="AlbumSpotifyId" class="form-control" />
+                <span asp-validation-for="AlbumSpotifyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

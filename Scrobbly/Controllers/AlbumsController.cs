@@ -23,15 +23,6 @@ namespace Scrobbly.Controllers
         {
             var musicContext = _context.Album.Include(a => a.AlbumArtists).ThenInclude(aa => aa.Artist);
 
-            ////var musicContext = _context.Album.FromSql(
-            //    @"SELECT album.*, artist.name
-            //    FROM album album
-            //    LEFT JOIN album_artists a_a
-            //        ON album.id = a_a.album_id
-            //    LEFT JOIN artist artist
-            //        ON a_a.artist_id = artist.id;"
-            //    );
-
             return View(await musicContext.ToListAsync());
         }
 

@@ -8,6 +8,7 @@ namespace Scrobbly.Models
         public Track()
         {
             InverseSourceTrack = new HashSet<Track>();
+            Play = new HashSet<Play>();
             TrackArtists = new HashSet<TrackArtists>();
             TrackTags = new HashSet<TrackTags>();
         }
@@ -22,6 +23,7 @@ namespace Scrobbly.Models
         public virtual Album Album { get; set; }
         public virtual Track SourceTrack { get; set; }
         public virtual ICollection<Track> InverseSourceTrack { get; set; }
+        public virtual ICollection<Play> Play { get; set; }
         public virtual ICollection<TrackArtists> TrackArtists { get; set; }
         public virtual ICollection<TrackTags> TrackTags { get; set; }
     }

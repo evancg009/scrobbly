@@ -1,10 +1,10 @@
 ﻿@model Scrobbly.Models.Play
 
 @{
-    ViewData["Title"] = "Add Play";
+    ViewData["Title"] = "Create";
 }
 
-<h2>Add Play</h2>
+<h2>Create</h2>
 
 <h4>Play</h4>
 <hr />
@@ -13,19 +13,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AlbumId" class="control-label"></label>
-                <input asp-for="AlbumId" class="form-control" />
-                <span asp-validation-for="AlbumId" class="text-danger"></span>
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AlbumName" class="control-label"></label>
                 <input asp-for="AlbumName" class="form-control" />
                 <span asp-validation-for="AlbumName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ArtistIds" class="control-label"></label>
-                <input asp-for="ArtistIds" class="form-control" />
-                <span asp-validation-for="ArtistIds" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ArtistNames" class="control-label"></label>
@@ -51,8 +46,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="TrackId" class="control-label"></label>
-                <input asp-for="TrackId" class="form-control" />
-                <span asp-validation-for="TrackId" class="text-danger"></span>
+                <select asp-for="TrackId" class ="form-control" asp-items="ViewBag.TrackId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="TrackName" class="control-label"></label>
@@ -63,6 +57,21 @@
                 <label asp-for="SourceOf" class="control-label"></label>
                 <input asp-for="SourceOf" class="form-control" />
                 <span asp-validation-for="SourceOf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrackSpotifyId" class="control-label"></label>
+                <input asp-for="TrackSpotifyId" class="form-control" />
+                <span asp-validation-for="TrackSpotifyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArtistSpotifyIds" class="control-label"></label>
+                <input asp-for="ArtistSpotifyIds" class="form-control" />
+                <span asp-validation-for="ArtistSpotifyIds" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumSpotifyId" class="control-label"></label>
+                <input asp-for="AlbumSpotifyId" class="form-control" />
+                <span asp-validation-for="AlbumSpotifyId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

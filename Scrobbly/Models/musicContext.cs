@@ -140,17 +140,15 @@ namespace Scrobbly.Models
                     .HasColumnName("id")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.AlbumId).HasColumnName("album_id");
-
                 entity.Property(e => e.AlbumName).HasColumnName("album_name");
 
-                entity.Property(e => e.ArtistIds)
-                    .IsRequired()
-                    .HasColumnName("artist_ids");
+                entity.Property(e => e.AlbumSpotifyId).HasColumnName("album_spotify_id");
 
                 entity.Property(e => e.ArtistNames)
                     .IsRequired()
                     .HasColumnName("artist_names");
+
+                entity.Property(e => e.ArtistSpotifyIds).HasColumnName("artist_spotify_ids");
 
                 entity.Property(e => e.Dirty).HasColumnName("dirty");
 
@@ -170,6 +168,13 @@ namespace Scrobbly.Models
                 entity.Property(e => e.TrackName)
                     .IsRequired()
                     .HasColumnName("track_name");
+
+                entity.Property(e => e.TrackSpotifyId).HasColumnName("track_spotify_id");
+
+                entity.HasOne(d => d.Track)
+                    .WithMany(p => p.Play)
+                    .HasForeignKey(d => d.TrackId)
+                    .HasConstraintName("fk_play_track_id");
             });
 
             modelBuilder.Entity<Tag>(entity =>
